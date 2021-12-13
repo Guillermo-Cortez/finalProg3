@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  date_from  :date
+#  date_to    :date
+#  user_id    :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: MyString
+  date_from: 2021-12-13
+  date_to: 2021-12-13
+  user: one
+
+two:
+  name: MyString
+  date_from: 2021-12-13
+  date_to: 2021-12-13
+  user: two

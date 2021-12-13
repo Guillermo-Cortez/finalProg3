@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: movements
+#
+#  id          :integer          not null, primary key
+#  type        :boolean
+#  amount      :integer
+#  description :string
+#  date        :datetime
+#  account_id  :integer          not null
+#  user_id     :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  type: false
+  amount: 1
+  description: MyString
+  date: 2021-12-13 18:59:47
+  account: one
+  user: one
+
+two:
+  type: false
+  amount: 1
+  description: MyString
+  date: 2021-12-13 18:59:47
+  account: two
+  user: two

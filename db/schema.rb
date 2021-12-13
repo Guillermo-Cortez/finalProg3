@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_13_203218) do
+ActiveRecord::Schema.define(version: 2021_12_13_220008) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.date "date_from"
+    t.date "date_to"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "movements", force: :cascade do |t|
+    t.boolean "type"
+    t.integer "amount"
+    t.string "description"
+    t.datetime "date"
+    t.integer "account_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_movements_on_account_id"
+    t.index ["user_id"], name: "index_movements_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,4 +47,7 @@ ActiveRecord::Schema.define(version: 2021_12_13_203218) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accounts", "users"
+  add_foreign_key "movements", "accounts"
+  add_foreign_key "movements", "users"
 end

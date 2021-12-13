@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Type:
+  = @movement.type
+%p
+  %b Amount:
+  = @movement.amount
+%p
+  %b Description:
+  = @movement.description
+%p
+  %b Date:
+  = @movement.date
+%p
+  %b Account:
+  = @movement.account
+%p
+  %b User:
+  = @movement.user
+
+= link_to 'Edit', edit_movement_path(@movement)
+\|
+= link_to 'Back', movements_path

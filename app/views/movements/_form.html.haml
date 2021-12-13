@@ -1,0 +1,13 @@
+-# frozen_string_literal: true
+= simple_form_for(@movement) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  #form-inputs.form-group
+    = f.input :amount, label: "Monto" 
+    = f.input :description, label: "Descripción" 
+    = f.input :date, input_html: { class: 'datepicker' }, label: "Fecha de realización" 
+    = f.association :account,  label: "Cuenta del movimiento", as: :select, collection: Account.where("date_to >= ?", Time.now)
+
+  .form-actions
+    = button_tag 'Submit', type: 'submit', class: "btn btn-success"

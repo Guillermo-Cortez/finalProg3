@@ -1,0 +1,27 @@
+%h1 Movimientos de cuenta
+
+%table{:class => "table table-striped"}
+  %thead
+    %tr
+      %th Monto
+      %th Descripción
+      %th Fecha
+      %th Cuenta
+      %th
+      %th
+      %th
+
+  %tbody
+    - @movements.each do |movement|
+      %tr
+        %td= movement.amount
+        %td= movement.description
+        %td= movement.date
+        %td= movement.account.name
+        %td= link_to 'Ver', movement
+        %td= link_to 'Editar', edit_movement_path(movement)
+        %td= link_to 'Eliminar', movement, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Generar movimieento', new_movement_path, class: "btn btn-success"
